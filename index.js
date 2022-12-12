@@ -1,5 +1,13 @@
+const http = require('http');
+http.createServer(function(request, response)
+{
+	response.writeHead(200, {'Content-Type': 'text/plain'});
+	response.end('Bot is online!');
+}).listen(3000);
+
 require('dotenv').config()
 
+const token = process.env.DISCORD_TOKEN;
 const fs = require('fs');
 const Discord = require('discord.js');
 const Client = require('./client/Client');
@@ -103,4 +111,4 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(token);
